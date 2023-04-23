@@ -35,7 +35,7 @@ def cadastrar_jogo(arquivo_gravar, pergunta_nome_jogo, pergunta_desenvolvedora, 
     lancamento = input(pergunta_ano_lancamento)
     abrir_arquivo.write(' Nome do jogo :{}; Desenvolvedora: {}; Ano de lançamento: {} \n'.format(nome_jogo, desenvolvedora, lancamento)) # gravando no arquivo 
 
-def listar_colecao(arquivo_colecao): # função que mostra a lista
+def listar_colecao(arquivo_colecao): # função que mostra a lista de jogos
     arqv = open(arquivo_colecao, 'r')
     print(arqv.read())
 
@@ -50,13 +50,17 @@ else:
 
 apresentacao()
 
-print('1 = Cadastrar novo jogo')
-print('2 = Mostrar os jogos cadastrados')
-print('3 = sair')
+while True:
+    print('1 = Cadastrar novo jogo')
+    print('2 = Mostrar os jogos cadastrados')
+    print('3 = sair')
 
-decisao_menu = validar_opcao_menu('O que deseja fazer?: ', 1, 3) # chamando funcao validar_opcao_menu e o intervalo de escolha no menu
-if decisao_menu == 1:
-    cadastro = cadastrar_jogo(arquivo, 'Qual o nome do jogo?: ', 'Quem desenvolveu?: ', 'Em que ano foi lançado?: ') # chamando função cadastrar_jogo e passando os inputs como parametro 
-elif decisao_menu == 2:
-    print('Aqui está a sua coleção:')
-    listar_colecao(arquivo)
+    decisao_menu = validar_opcao_menu('O que deseja fazer?: ', 1, 3) # chamando funcao validar_opcao_menu e o intervalo de escolha no menu
+    if decisao_menu == 1:
+        cadastro = cadastrar_jogo(arquivo, 'Qual o nome do jogo?: ', 'Quem desenvolveu?: ', 'Em que ano foi lançado?: ') # chamando função cadastrar_jogo e passando os inputs como parametro 
+    elif decisao_menu == 2:
+        print('Aqui está a sua coleção:')
+        listar_colecao(arquivo)
+    elif decisao_menu == 3:
+        print('Saindo...')
+        break
